@@ -80,7 +80,6 @@ Application {
                 repeat: false
                 interval: 100
                 onTriggered: {
-
                     var i = 0
                     while (i < folderModel.count){
                         var fileName = folderModel.get(i, "fileName")
@@ -91,7 +90,10 @@ Application {
                         }
                         i = i+1
                     }
-                    view.currentIndex = 2
+                    if (folderModel.count > 2)
+                        view.currentIndex = 2
+                    else
+                        view.currentIndex = 1
                 }
             }
 
