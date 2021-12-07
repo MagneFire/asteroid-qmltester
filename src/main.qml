@@ -38,15 +38,92 @@ Application {
     ConfigurationValue {
         id: previousSelected
         key: "/org/asteroidos/qmltester/previous-selected"
-        defaultValue: ""
+        defaultValue: "file://"
     }
 
+    // ====== BEGIN WATCHFACE SPECIFIC ======
     property bool displayAmbient: false
     WallClock {
         id: wallClock
         enabled: true
         updateFrequency: WallClock.Second
     }
+    // ====== END WATCHFACE SPECIFIC ======
+    // ====== BEGIN APP LAUNCHER SPECIFIC ======
+    property bool fakePressed:     false
+    property bool toTopAllowed:    false
+    property bool toBottomAllowed: false
+    property bool toLeftAllowed:   false
+    property bool toRightAllowed:  false
+    property bool forbidTop:       false
+    property bool forbidBottom:    false
+    property bool forbidLeft:      false
+    property bool forbidRight:     false
+    property var launcherCenterColor: alb.centerColor("")
+    property var launcherOuterColor: alb.outerColor("")
+    Item {
+        id: burnInProtectionManager
+        property int leftOffset
+        property int rightOffset
+        property int topOffset
+        property int bottomOffset
+        property int widthOffset
+        property int heightOffset
+    }
+
+    QtObject {
+        id: alb
+        function outerColor(path) {
+            return "#000000";
+        }
+        function centerColor(path) {
+            return "#888888";
+        }
+    }
+
+    ListModel {
+        id: launcherModel
+        Component.onCompleted: {
+            append({object: {title: "Agenda", iconId: "ios-calendar-outline"}});
+            append({object: {title: "Alarm Clock", iconId: "ios-alarm-outline"}});
+            append({object: {title: "Calculator", iconId: "ios-calculator-outline"}});
+            append({object: {title: "Compass", iconId: "ios-compass-outline"}});
+            append({object: {title: "Flashlight", iconId: "ios-bulb-outline"}});
+            append({object: {title: "Heart Rate", iconId: "ios-pulse-outline"}});
+            append({object: {title: "Music", iconId: "ios-musical-notes-outline"}});
+            append({object: {title: "Settings", iconId: "ios-settings-outline"}});
+            append({object: {title: "Stopwatch", iconId: "ios-stopwatch-outline"}});
+            append({object: {title: "Timer", iconId: "ios-timer-outline"}});
+            append({object: {title: "Weather", iconId: "ios-cloudy-outline"}});
+        }
+    }
+
+    QtObject {
+        id: compositor
+        property bool displayAmbient: false
+    }
+
+    QtObject {
+        id: rightIndicator
+        function animate() {}
+    }
+    QtObject {
+        id: leftIndicator
+        function animate() {}
+    }
+    QtObject {
+        id: topIndicator
+        function animate() {}
+    }
+    QtObject {
+        id: bottomIndicator
+        function animate() {}
+    }
+    QtObject {
+        id: localeManager
+        property string changesObserver: ""
+    }
+    // ====== END APP LAUNCHER SPECIFIC ======
 
     LayerStack {
         id: layerStack
