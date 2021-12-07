@@ -233,21 +233,20 @@ Application {
                                     file = file.slice(0, -3)
                                     var n = file.lastIndexOf('/')
                                     var prevPath = file.slice(0, n)
-                                    if (prevPath === parentPath) {
-                                        pop()
-                                    } else if (prevPath === "file://") {
+                                    if (prevPath === "file://") {
                                         // Wants to traverse to root.
                                         // Due to string manipulation it results in the above case
-                                        layerStack.push(browser, {"parentPath": " ", "path": "file:///"})
+                                        path = "file:///"
                                     } else if (prevPath === "file:/") {
                                         // Currently at root, ignore events.
                                     } else {
-                                        layerStack.push(browser, {"parentPath": " ", "path": prevPath})
+                                        path = prevPath
+                                        
                                     }
                                 } else if (file.slice(-1) == ".") {
                                     // Ignore
                                 } else if (folderModel.isFolder(index)) {
-                                        layerStack.push(browser, {"parentPath": path, "path": file})
+                                    path = file
                                 } else {
                                     previousSelected.value = file
                                     layerStack.push(loader, {"path": file})
