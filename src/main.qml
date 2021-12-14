@@ -48,6 +48,12 @@ Application {
         enabled: true
         updateFrequency: WallClock.Second
     }
+
+    ConfigurationValue {
+        id: use12H
+        key: "/org/asteroidos/settings/use-12h-format"
+        defaultValue: false
+    }
     // ====== END WATCHFACE SPECIFIC ======
     // ====== BEGIN APP LAUNCHER SPECIFIC ======
     property bool fakePressed:     false
