@@ -155,8 +155,6 @@ Application {
             property var path: previousPath.value
             property var pop
 
-            Component.onCompleted: previousPath.value = path
-
             Timer {
                 id: initalItem
                 running: true
@@ -243,16 +241,18 @@ Application {
                                         // Wants to traverse to root.
                                         // Due to string manipulation it results in the above case
                                         path = "file:///"
+                                        previousPath.value = path
                                     } else if (prevPath === "file:/") {
                                         // Currently at root, ignore events.
                                     } else {
                                         path = prevPath
-                                        
+                                        previousPath.value = path
                                     }
                                 } else if (file.slice(-1) == ".") {
                                     // Ignore
                                 } else if (folderModel.isFolder(index)) {
                                     path = file
+                                    previousPath.value = path
                                 } else {
                                     previousSelected.value = file
                                     layerStack.push(loader, {"path": file})
