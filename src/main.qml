@@ -141,6 +141,7 @@ Application {
         Item {
             property var path: "file://"
             Loader {
+                focus: true
                 anchors.fill: parent
                 // Use a random see to ensure that it can't be cached
                 source: path + "?" + Math.random()
