@@ -1,8 +1,18 @@
-add_library(asteroid-qmltester main.cpp resources.qrc)
-set_target_properties(asteroid-qmltester PROPERTIES PREFIX "" SUFFIX "")
+add_executable(
+    ${CMAKE_PROJECT_NAME}
+    main.cpp
+    resources.qrc
+)
 
-target_link_libraries(asteroid-qmltester PUBLIC
-	Asteroid::AsteroidApp)
+target_link_libraries(
+    ${CMAKE_PROJECT_NAME}
+    PUBLIC
+	Asteroid::AsteroidApp6
+)
 
-install(TARGETS asteroid-qmltester
-	DESTINATION ${CMAKE_INSTALL_BINDIR})
+install(
+    TARGETS
+        ${CMAKE_PROJECT_NAME}
+    DESTINATION
+        ${CMAKE_INSTALL_BINDIR}
+)
