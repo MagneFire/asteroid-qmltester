@@ -1,19 +1,19 @@
-cmake_minimum_required(VERSION 3.6.0)
+cmake_minimum_required(VERSION 3.20)
 
 project(asteroid-qmltester
-	VERSION 0.0.1
+	VERSION 1.0.0
 	DESCRIPTION "Default qmltester app for AsteroidOS")
 
 find_package(ECM REQUIRED NO_MODULE)
-find_package(AsteroidApp REQUIRED)
+find_package(AsteroidApp6 REQUIRED)
 
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ASTEROID_MODULE_PATH})
 
 include(FeatureSummary)
 include(GNUInstallDirs)
 include(ECMFindQmlModule)
-include(AsteroidCMakeSettings)
-include(AsteroidTranslations)
+include(Asteroid6CMakeSettings)
+include(Asteroid6Translations)
 
 ecm_find_qmlmodule(Nemo.KeepAlive 1.1)
 
