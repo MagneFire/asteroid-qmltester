@@ -265,5 +265,5 @@ Application {
             }
         }
     }
-    Component.onCompleted: DisplayBlanking.preventBlanking = true
+    DisplayBlanking { preventBlanking: true }
 }
