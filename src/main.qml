@@ -20,7 +20,6 @@ import org.asteroid.controls
 import org.asteroid.utils
 import Qt.labs.folderlistmodel
 import Nemo.KeepAlive
-import Nemo.Time
 import Nemo.Configuration
 
 Application {
